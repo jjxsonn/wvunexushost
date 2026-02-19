@@ -8,7 +8,7 @@ import {
   ChevronLeft, ChevronDown, X, Zap, TrendingUp, Users, BarChart2,
   Brain, Layers, Server, Globe, ArrowUpRight, Play, Presentation, FileText, Upload, Loader,
   AlertTriangle, CheckCheck, DollarSign, Map, Star, Cpu, Database,
-  Fingerprint, Eye, Building2, GraduationCap as GradCap,
+  Fingerprint, Eye, Building2, GraduationCap as GradCap, Laptop,
   Phone, Navigation, Coffee, VolumeX, AlertOctagon, Wifi, Send
 } from "lucide-react";
 
@@ -98,8 +98,8 @@ interface CardProps {
 function Card({ children, className = "", style = {} }: CardProps) {
   return (
     <div className={`rounded-3xl bg-white ${className}`} style={{
-      boxShadow: "0 10px 40px -10px rgba(0,0,0,0.05), 0 0 2px rgba(0,0,0,0.05)",
-      border: "1px solid rgba(255,255,255,0.5)",
+      boxShadow: "0 4px 24px -1px rgba(0,0,0,0.06), 0 0 1px rgba(0,0,0,0.04)",
+      border: "1px solid rgba(255,255,255,0.8)",
       ...style
     }}>
       {children}
@@ -301,9 +301,9 @@ function SmartStack() {
   }, []);
 
   return (
-    <Card style={{ padding: "14px 16px", background: "rgba(255,255,255,0.8)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.6)", position: "relative", overflow: "hidden" }}>
+    <Card style={{ padding: "16px", background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.8)", position: "relative", overflow: "hidden" }}>
       <div style={{ display: "flex", gap: 12 }}>
-        <div style={{ width: 38, height: 38, borderRadius: 12, background: insights[index].bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>{insights[index].icon}</div>
+        <div style={{ width: 42, height: 42, borderRadius: 14, background: insights[index].bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{insights[index].icon}</div>
         <div style={{ flex: 1 }}>
           <p style={{ fontSize: 13, fontWeight: 700, color: insights[index].color, marginBottom: 4 }}>{insights[index].title}</p>
           <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{insights[index].text} <span style={{ display: "block", fontSize: 12, color: "#6b7280", marginTop: 4 }}>{insights[index].sub}</span></p>
@@ -317,7 +317,7 @@ function SmartStack() {
 }
 
 // ─── SLIDE CONTENTS ───────────────────────────────────────────────────────────
-function SlideContent({ slideId, onEnterApp }: { slideId: number; onEnterApp: () => void }) {
+function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobile: () => void }) {
   const baseText = { fontFamily: "'Plus Jakarta Sans', sans-serif" };
 
   if (slideId === 0) return (
@@ -360,24 +360,101 @@ function SlideContent({ slideId, onEnterApp }: { slideId: number; onEnterApp: ()
   );
 
   if (slideId === 2) return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%", alignItems: "center" }}>
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
-        style={{ width: "100%", padding: 24, borderRadius: 20, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.15)", textAlign: "center" }}>
-        <div style={{ fontSize: 48, marginBottom: 12 }}>📱</div>
-        <p style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 6, ...baseText }}>The live app is embedded in this page.</p>
-        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: 20, ...baseText }}>
-          Click below to exit the presentation and interact with the full WVU Nexus prototype — Academic Roadmap, Campus Pulse, unified app grid and all.
-        </p>
-        <button onClick={onEnterApp}
-          style={{ padding: "14px 32px", borderRadius: 16, border: "none", cursor: "pointer", background: "#EAAA00", color: "#002855", fontSize: 15, fontWeight: 800, fontFamily: "inherit", display: "inline-flex", alignItems: "center", gap: 8 }}>
-          <Play size={16} /> Enter the Live Demo
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 40, width: "100%", flexWrap: "wrap" }}>
+      <div style={{ flex: 1, minWidth: 280, display: "flex", flexDirection: "column", gap: 16 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <h3 style={{ fontSize: 28, fontWeight: 800, color: "#fff", lineHeight: 1.2, ...baseText }}>Your Campus.<br />In Your Pocket.</h3>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, ...baseText }}>
+            Experience the fully interactive prototype. Test the SafeWalk panic button, scan a syllabus, and see real-time campus sentiment.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          {["SafeWalk Shield", "Syllabus Scanner", "Campus Pulse", "Smart Nudges"].map(f => (
+            <div key={f} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "#EAAA00", fontWeight: 600, ...baseText }}>
+              <CheckCircle2 size={14} /> {f}
+            </div>
+          ))}
+        </div>
+
+        <button onClick={onEnterMobile}
+          style={{ marginTop: 8, padding: "14px 28px", borderRadius: 16, border: "none", cursor: "pointer", background: "#EAAA00", color: "#002855", fontSize: 15, fontWeight: 800, fontFamily: "inherit", display: "inline-flex", alignItems: "center", gap: 10, alignSelf: "flex-start" }}>
+          <Play size={18} fill="#002855" /> Launch Demo
         </button>
-      </motion.div>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, width: "100%" }}>
-        {["SafeWalk Shield", "Predictive Logistics", "Meal Budgeting", "Campus Pulse", "Unified App Grid", "Academic Nudges"].map((f, i) => (
-          <div key={f} style={{ padding: "8px 10px", borderRadius: 12, background: "rgba(234,170,0,0.1)", border: "1px solid rgba(234,170,0,0.2)", fontSize: 11, fontWeight: 600, color: "#EAAA00", textAlign: "center", ...baseText }}>✓ {f}</div>
-        ))}
+      </div>
+
+      {/* Phone Mockup */}
+      <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+        style={{ position: "relative", width: 240, height: 480, borderRadius: 36, border: "8px solid #1e293b", background: "#0f172a", boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5)", overflow: "hidden", flexShrink: 0 }}>
+        <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: 90, height: 24, background: "#1e293b", borderBottomLeftRadius: 14, borderBottomRightRadius: 14, zIndex: 20 }} />
+
+        {/* Real App UI Mockup */}
+        <div style={{ width: "100%", height: "100%", background: "#f4f6fa", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          {/* Header */}
+          <div style={{ padding: "36px 16px 16px", background: "linear-gradient(120deg, #002855 0%, #003da5 100%)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+              <div style={{ width: 24, height: 24, borderRadius: 8, background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 800 }}>N</div>
+              <div style={{ width: 24, height: 24, borderRadius: 8, background: "#EAAA00", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 800 }}>A</div>
+            </div>
+            <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 10, fontWeight: 500, marginBottom: 2 }}>Good morning,</p>
+            <h1 style={{ fontFamily: "'Fraunces', serif", color: "#fff", fontSize: 20, fontWeight: 700, lineHeight: 1.2 }}>Alex 👋</h1>
+          </div>
+
+          {/* Scrollable Body */}
+          <div style={{ padding: 12, display: "flex", flexDirection: "column", gap: 10, overflowY: "hidden" }}>
+            {/* Status Row */}
+            <div style={{ display: "flex", gap: 8, overflow: "hidden" }}>
+              <div style={{ padding: "4px 8px", borderRadius: 8, background: "#fff", border: "1px solid #eef0f4", display: "flex", alignItems: "center", gap: 4 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#3aab6e" }} />
+                <span style={{ fontSize: 9, fontWeight: 700, color: "#374151" }}>PRT: Running</span>
+              </div>
+            </div>
+
+            {/* Smart Stack Card */}
+            <div style={{ padding: 10, borderRadius: 12, background: "linear-gradient(135deg, #fff, #f8f9fc)", border: "1px solid #eef0f4", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
+              <div style={{ display: "flex", gap: 8 }}>
+                <div style={{ width: 28, height: 28, borderRadius: 8, background: "#e6f0ff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>⚡</div>
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontSize: 10, fontWeight: 700, color: "#1a6bc4", marginBottom: 2 }}>PRT Rescue Alert</p>
+                  <p style={{ fontSize: 9, color: "#374151", lineHeight: 1.4 }}>PRT is down. Take Blue Line Bus to make CS 445.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Assignments Card */}
+            <div style={{ padding: 10, borderRadius: 12, background: "#fff", border: "1px solid #fef3e7" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: 8 }}>
+                <span style={{ fontSize: 12 }}>⚡</span>
+                <span style={{ fontSize: 10, fontWeight: 700, color: "#002855" }}>Up Next</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                <div style={{ width: 24, height: 24, borderRadius: 8, background: "#f4f6fa", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 }}>💻</div>
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontSize: 10, fontWeight: 600, color: "#1e2a3a" }}>Dist. Systems Lab</p>
+                  <p style={{ fontSize: 8, color: "#9ba3b5" }}>Due Feb 21</p>
+                </div>
+                <span style={{ fontSize: 8, fontWeight: 700, padding: "2px 6px", borderRadius: 6, background: "#fce8e8", color: "#d43b3b" }}>Hard</span>
+              </div>
+            </div>
+
+            {/* Quick Actions Grid */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
+              {QUICK_ACTIONS.slice(0, 6).map((app, i) => (
+                <div key={i} style={{ padding: 8, borderRadius: 10, background: "#fff", border: "1px solid #f0f2f5", display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                  <div style={{ width: 20, height: 20, borderRadius: 6, background: app.bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <app.icon size={10} style={{ color: app.color }} />
+                  </div>
+                  <span style={{ fontSize: 8, fontWeight: 600, color: "#1e2a3a" }}>{app.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* FAB */}
+          <div style={{ position: "absolute", bottom: 20, right: 20, width: 40, height: 40, borderRadius: 14, background: "#002855", boxShadow: "0 8px 20px rgba(0,40,85,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Shield size={18} color="#fff" />
+          </div>
+        </div>
       </motion.div>
     </div>
   );
@@ -518,7 +595,7 @@ function SlideContent({ slideId, onEnterApp }: { slideId: number; onEnterApp: ()
 }
 
 // ─── PRESENTATION MODE ────────────────────────────────────────────────────────
-function PresentationComponent({ onClose, onEnterApp }: { onClose: () => void, onEnterApp: () => void }) {
+function PresentationComponent({ onClose, onEnterMobile }: { onClose: () => void, onEnterMobile: () => void }) {
   const [current, setCurrent] = useState(0);
   const total = SLIDES.length;
   const slide = SLIDES[current];
@@ -585,7 +662,7 @@ function PresentationComponent({ onClose, onEnterApp }: { onClose: () => void, o
                 {titleLines.map((line, i) => <span key={i} style={{ display: "block" }}>{line}</span>)}
               </h2>
             </div>
-            <SlideContent slideId={current} onEnterApp={onEnterApp} />
+            <SlideContent slideId={current} onEnterMobile={onEnterMobile} />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -608,7 +685,7 @@ function PresentationComponent({ onClose, onEnterApp }: { onClose: () => void, o
             Next <ChevronRight size={16} />
           </button>
         ) : (
-          <button onClick={onEnterApp}
+          <button onClick={onEnterMobile}
             style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 14, border: "none", background: "#EAAA00", cursor: "pointer", color: "#002855", fontSize: 13, fontWeight: 700, fontFamily: "inherit" }}>
             <Play size={14} /> Live Demo
           </button>
@@ -618,8 +695,8 @@ function PresentationComponent({ onClose, onEnterApp }: { onClose: () => void, o
   );
 }
 
-// ─── APP DEMO ─────────────────────────────────────────────────────────────────
-function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
+// ─── MOBILE DEMO ──────────────────────────────────────────────────────────────
+function MobileAppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
   const [assignments, setAssignments] = useState(INITIAL_ASSIGNMENTS);
   const [isScanning, setIsScanning] = useState(false);
   const [tab, setTab] = useState("home");
@@ -674,7 +751,7 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
   ];
 
   return (
-    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: "#f4f6fa", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: "#eff2f6", minHeight: "100vh" }}>
       <AnimatePresence>{isScanning && <ScanOverlay />}</AnimatePresence>
       <AnimatePresence>{safeMode && <SafeModeOverlay onClose={() => setSafeMode(false)} />}</AnimatePresence>
       <AnimatePresence>{showChat && <ChatbotOverlay onClose={() => setShowChat(false)} />}</AnimatePresence>
@@ -692,7 +769,7 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
       </AnimatePresence>
 
       {/* Nav */}
-      <div style={{ background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(0,0,0,0.05)", position: "sticky", top: 0, zIndex: 40 }}>
+      <div style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(0,0,0,0.06)", position: "sticky", top: 0, zIndex: 40 }}>
         <div style={{ maxWidth: 680, margin: "0 auto", padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
           <button onClick={onBackToLanding} style={{ display: "flex", alignItems: "center", gap: 8, background: "none", border: "none", cursor: "pointer", padding: 0, marginRight: 4 }}>
             <div style={{ width: 32, height: 32, borderRadius: 10, background: "linear-gradient(135deg, #002855, #1a4a8a)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 14 }}>N</div>
@@ -736,12 +813,13 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
 
           {/* HOME */}
           {tab === "home" && (
-            <motion.div key="home" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <motion.div key="home" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               <Card style={{ overflow: "hidden" }}>
-                <div style={{ padding: "24px 24px 20px", background: "linear-gradient(120deg, #002855 0%, #003da5 100%)", position: "relative" }}>
+                <div style={{ padding: "28px 24px 24px", background: "linear-gradient(135deg, #002855 0%, #004299 100%)", position: "relative" }}>
                   <div style={{ position: "absolute", top: -20, right: -20, width: 100, height: 100, background: "rgba(255,255,255,0.1)", borderRadius: "50%", filter: "blur(20px)" }} />
+                  <div style={{ position: "absolute", bottom: -40, left: -20, width: 140, height: 140, background: "rgba(255,255,255,0.05)", borderRadius: "50%", filter: "blur(30px)" }} />
                   <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, fontWeight: 500, marginBottom: 4 }}>{greeting()},</p>
-                  <h1 style={{ fontFamily: "'Fraunces', serif", color: "#fff", fontSize: 30, fontWeight: 700, lineHeight: 1.2, marginBottom: 14 }}>Alex 👋</h1>
+                  <h1 style={{ fontFamily: "'Fraunces', serif", color: "#fff", fontSize: 32, fontWeight: 700, lineHeight: 1.2, marginBottom: 16 }}>Alex 👋</h1>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                     {["⭐ GPA 3.61", "📚 81 Credits", "💡 Computer Science", "🎓 Junior"].map(chip => (
                       <span key={chip} style={{ padding: "4px 12px", borderRadius: 12, background: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.9)", fontSize: 12, fontWeight: 600 }}>{chip}</span>
@@ -764,7 +842,7 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
                 <SmartStack />
               </motion.div>
 
-              <Card style={{ padding: 16, border: "1px solid #fef3e7", background: "linear-gradient(to bottom, #fff, #fffaf5)" }}>
+              <Card style={{ padding: 18, border: "1px solid #fff", background: "linear-gradient(180deg, #ffffff 0%, #fcfcfd 100%)" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <span style={{ fontSize: 16 }}>⚡</span>
                   <span style={{ fontSize: 13, fontWeight: 700, color: "#002855" }}>Coming Up</span>
@@ -773,7 +851,7 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {assignments.slice(0, 3).map((a, i) => (
                     <motion.div key={a.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <div style={{ width: 36, height: 36, borderRadius: 14, background: "#f4f6fa", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>{a.emoji}</div>
+                      <div style={{ width: 40, height: 40, borderRadius: 14, background: "#f4f6fa", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{a.emoji}</div>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <p style={{ fontSize: 13, fontWeight: 600, color: "#1e2a3a", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{a.title}</p>
                         <p style={{ fontSize: 12, color: "#9ba3b5" }}>{a.course} · Due {a.due}</p>
@@ -783,7 +861,7 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
                     </motion.div>
                   ))}
                 </div>
-                <button onClick={() => setTab("academics")} style={{ width: "100%", marginTop: 12, padding: "10px 0", borderRadius: 16, border: "none", cursor: "pointer", background: "#f4f6fa", color: "#002855", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, fontFamily: "inherit" }}>
+                <button onClick={() => setTab("academics")} style={{ width: "100%", marginTop: 14, padding: "12px 0", borderRadius: 16, border: "none", cursor: "pointer", background: "#f4f6fa", color: "#002855", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, fontFamily: "inherit", transition: "background 0.2s" }}>
                   View full roadmap <ArrowRight size={14} />
                 </button>
               </Card>
@@ -793,7 +871,7 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
                   {QUICK_ACTIONS.slice(0, 6).map((app, i) => (
                     <motion.button key={app.label} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                      style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", padding: 12, borderRadius: 20, background: "#fff", border: "1px solid #f0f2f5", boxShadow: "0 2px 8px rgba(0,0,0,0.03)", cursor: "pointer", fontFamily: "inherit" }}>
+                      style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", padding: 14, borderRadius: 20, background: "#fff", border: "none", boxShadow: "0 4px 12px rgba(0,0,0,0.04)", cursor: "pointer", fontFamily: "inherit" }}>
                       <div style={{ width: 36, height: 36, borderRadius: 12, background: app.bg, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 8 }}>
                         <app.icon size={17} style={{ color: app.color }} />
                       </div>
@@ -804,7 +882,7 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
                 </div>
               </div>
 
-              <Card style={{ padding: 16 }}>
+              <Card style={{ padding: 18 }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ fontSize: 16 }}>🗺️</span>
@@ -825,7 +903,7 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
                 </div>
               </Card>
 
-              <div style={{ display: "flex", alignItems: "center", gap: 12, padding: 12, borderRadius: 16, background: "linear-gradient(90deg, #e8f4fe, #eef1f8)", border: "1px solid #d0e4f7" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, padding: 14, borderRadius: 18, background: "linear-gradient(90deg, #e8f4fe, #eef1f8)", border: "1px solid #d0e4f7" }}>
                 <div style={{ width: 32, height: 32, borderRadius: 10, background: "rgba(26,107,196,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Lock size={15} style={{ color: "#1a6bc4" }} />
                 </div>
@@ -1058,8 +1136,129 @@ function AppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
   );
 }
 
+// ─── DESKTOP DEMO ─────────────────────────────────────────────────────────────
+function DesktopAppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
+  const [tab, setTab] = useState("home");
+  const [showChat, setShowChat] = useState(false);
+  const [assignments] = useState(INITIAL_ASSIGNMENTS);
+
+  return (
+    <div style={{ display: "flex", minHeight: "100vh", background: "#f0f2f5", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+      {/* Sidebar */}
+      <div style={{ width: 260, background: "#002855", color: "#fff", display: "flex", flexDirection: "column", flexShrink: 0 }}>
+        <div style={{ padding: 24, display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg, #EAAA00, #f0c030)", display: "flex", alignItems: "center", justifyContent: "center", color: "#002855", fontWeight: 800 }}>N</div>
+          <span style={{ fontFamily: "'Fraunces', serif", fontSize: 20, fontWeight: 700 }}>Nexus OS</span>
+        </div>
+        <div style={{ padding: "0 12px", display: "flex", flexDirection: "column", gap: 4 }}>
+          {[
+            { id: "home", label: "Dashboard", icon: Layers },
+            { id: "academics", label: "Academics", icon: BookOpen },
+            { id: "pulse", label: "Campus Pulse", icon: TrendingUp },
+            { id: "apps", label: "App Center", icon: Cpu },
+          ].map(item => (
+            <button key={item.id} onClick={() => setTab(item.id)}
+              style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 16px", borderRadius: 12, background: tab === item.id ? "rgba(255,255,255,0.1)" : "transparent", color: tab === item.id ? "#fff" : "rgba(255,255,255,0.6)", border: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, textAlign: "left", fontFamily: "inherit" }}>
+              <item.icon size={18} /> {item.label}
+            </button>
+          ))}
+        </div>
+        <div style={{ marginTop: "auto", padding: 24 }}>
+          <button onClick={onBackToLanding} style={{ display: "flex", alignItems: "center", gap: 10, color: "rgba(255,255,255,0.6)", background: "none", border: "none", cursor: "pointer", fontSize: 13, fontFamily: "inherit" }}>
+            <ChevronLeft size={16} /> Back to Landing
+          </button>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", height: "100vh", overflow: "hidden" }}>
+        {/* Header */}
+        <div style={{ height: 70, background: "#fff", borderBottom: "1px solid #eef0f4", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px", flexShrink: 0 }}>
+          <h2 style={{ fontSize: 18, fontWeight: 700, color: "#002855" }}>{tab === "home" ? "Student Dashboard" : tab.charAt(0).toUpperCase() + tab.slice(1)}</h2>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 16px", background: "#f4f6fa", borderRadius: 20 }}>
+              <Search size={14} color="#9ba3b5" />
+              <input placeholder="Search courses, people, apps..." style={{ border: "none", background: "transparent", outline: "none", fontSize: 13, width: 240, fontFamily: "inherit" }} />
+            </div>
+            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#002855", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700 }}>A</div>
+          </div>
+        </div>
+
+        {/* Scrollable Area */}
+        <div style={{ flex: 1, overflowY: "auto", padding: 32 }}>
+          {tab === "home" && (
+            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 24, maxWidth: 1200, margin: "0 auto" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                {/* Greeting Card */}
+                <Card style={{ padding: 32, background: "linear-gradient(120deg, #002855 0%, #003da5 100%)", color: "#fff", position: "relative", overflow: "hidden" }}>
+                  <div style={{ position: "absolute", top: -20, right: -20, width: 200, height: 200, background: "rgba(255,255,255,0.1)", borderRadius: "50%", filter: "blur(40px)" }} />
+                  <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 32, fontWeight: 700, marginBottom: 8 }}>Welcome back, Alex! 👋</h1>
+                  <p style={{ fontSize: 14, opacity: 0.8, marginBottom: 24 }}>You have 4 assignments due this week and 2 new alerts.</p>
+                  <div style={{ display: "flex", gap: 12 }}>
+                    {["⭐ GPA 3.61", "📚 81 Credits", "💡 Computer Science"].map(chip => (
+                      <span key={chip} style={{ padding: "6px 14px", borderRadius: 12, background: "rgba(255,255,255,0.15)", fontSize: 13, fontWeight: 600 }}>{chip}</span>
+                    ))}
+                  </div>
+                </Card>
+                <SmartStack />
+                <Card style={{ padding: 24 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#002855", marginBottom: 16 }}>Academic Roadmap</h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    {assignments.map((a, i) => (
+                      <div key={a.id} style={{ display: "flex", alignItems: "center", gap: 16, padding: 12, borderRadius: 12, background: "#f8f9fc", border: "1px solid #eef0f4" }}>
+                        <div style={{ width: 40, height: 40, borderRadius: 12, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>{a.emoji}</div>
+                        <div style={{ flex: 1 }}>
+                          <p style={{ fontSize: 14, fontWeight: 600, color: "#1e2a3a" }}>{a.title}</p>
+                          <p style={{ fontSize: 12, color: "#9ba3b5" }}>{a.course} · Due {a.due}</p>
+                        </div>
+                        <span style={{ fontSize: 12, fontWeight: 600, padding: "4px 10px", borderRadius: 8, background: difficultyStyle[a.difficulty].bg, color: difficultyStyle[a.difficulty].text }}>{a.difficulty}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                <Card style={{ padding: 24 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#002855", marginBottom: 16 }}>Quick Actions</h3>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                    {QUICK_ACTIONS.slice(0, 6).map(app => (
+                      <div key={app.label} style={{ padding: 12, borderRadius: 12, background: "#f8f9fc", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, cursor: "pointer" }}>
+                        <app.icon size={20} color={app.color} />
+                        <span style={{ fontSize: 12, fontWeight: 600, color: "#1e2a3a" }}>{app.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+                <Card style={{ padding: 24 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#002855", marginBottom: 16 }}>Campus Pulse</h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    {PULSE_POSTS.slice(0, 3).map(post => (
+                      <div key={post.id} style={{ padding: 12, borderRadius: 12, background: "#f8f9fc", fontSize: 13 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                          <span style={{ fontWeight: 600, color: "#1a4a8a" }}>{post.area}</span>
+                          <span style={{ fontSize: 16 }}>{post.mood === "positive" ? "😊" : post.mood === "negative" ? "😤" : "😐"}</span>
+                        </div>
+                        <p style={{ color: "#374151", lineHeight: 1.4 }}>{post.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <AnimatePresence>{showChat && <ChatbotOverlay onClose={() => setShowChat(false)} />}</AnimatePresence>
+      <button onClick={() => setShowChat(!showChat)} style={{ position: "fixed", bottom: 32, right: 32, width: 60, height: 60, borderRadius: 30, background: "#EAAA00", color: "#002855", border: "none", boxShadow: "0 10px 30px rgba(234,170,0,0.4)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100 }}>
+        <Sparkles size={28} />
+      </button>
+    </div>
+  );
+}
+
 // ─── LANDING PAGE ─────────────────────────────────────────────────────────────
-function LandingPage({ onOpenPresentation, onEnterApp }: { onOpenPresentation: () => void; onEnterApp: () => void }) {
+function LandingPage({ onOpenPresentation, onEnterMobile, onEnterDesktop }: { onOpenPresentation: () => void; onEnterMobile: () => void; onEnterDesktop: () => void }) {
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: "#fff", minHeight: "100vh" }}>
 
@@ -1075,9 +1274,13 @@ function LandingPage({ onOpenPresentation, onEnterApp }: { onOpenPresentation: (
               style={{ display: "flex", alignItems: "center", gap: 7, padding: "9px 18px", borderRadius: 14, border: "1px solid #eef0f4", background: "#f8f9fc", cursor: "pointer", color: "#002855", fontSize: 13, fontWeight: 700, fontFamily: "inherit" }}>
               📽️ View Pitch Deck
             </button>
-            <button onClick={onEnterApp}
-              style={{ display: "flex", alignItems: "center", gap: 7, padding: "9px 20px", borderRadius: 14, border: "none", background: "linear-gradient(135deg,#002855,#1a4a8a)", cursor: "pointer", color: "#fff", fontSize: 13, fontWeight: 700, fontFamily: "inherit" }}>
-              <Play size={13} /> Live Demo
+            <button onClick={onEnterMobile}
+              style={{ display: "flex", alignItems: "center", gap: 7, padding: "9px 16px", borderRadius: 14, border: "none", background: "linear-gradient(135deg,#002855,#1a4a8a)", cursor: "pointer", color: "#fff", fontSize: 13, fontWeight: 700, fontFamily: "inherit" }}>
+              📱 Mobile
+            </button>
+            <button onClick={onEnterDesktop}
+              style={{ display: "flex", alignItems: "center", gap: 7, padding: "9px 16px", borderRadius: 14, border: "1px solid #eef0f4", background: "#fff", cursor: "pointer", color: "#002855", fontSize: 13, fontWeight: 700, fontFamily: "inherit" }}>
+              💻 Desktop
             </button>
           </div>
         </div>
@@ -1101,9 +1304,13 @@ function LandingPage({ onOpenPresentation, onEnterApp }: { onOpenPresentation: (
             WVU Nexus unifies 15+ fragmented campus apps into one proactive, AI-powered dashboard — built for 30,000 students.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <button onClick={onEnterApp}
+            <button onClick={onEnterMobile}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "none", background: "#EAAA00", cursor: "pointer", color: "#002855", fontSize: 15, fontWeight: 800, fontFamily: "inherit" }}>
-              <Play size={16} /> Try the Live Demo
+              📱 Mobile Demo
+            </button>
+            <button onClick={onEnterDesktop}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", cursor: "pointer", color: "#fff", fontSize: 15, fontWeight: 800, fontFamily: "inherit" }}>
+              💻 Desktop Demo
             </button>
             <button onClick={onOpenPresentation}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.07)", cursor: "pointer", color: "#fff", fontSize: 15, fontWeight: 700, fontFamily: "inherit" }}>
@@ -1168,9 +1375,13 @@ function LandingPage({ onOpenPresentation, onEnterApp }: { onOpenPresentation: (
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "none", background: "#EAAA00", cursor: "pointer", color: "#002855", fontSize: 14, fontWeight: 800, fontFamily: "inherit" }}>
               📽️ Open Pitch Deck
             </button>
-            <button onClick={onEnterApp}
+            <button onClick={onEnterMobile}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.07)", cursor: "pointer", color: "#fff", fontSize: 14, fontWeight: 700, fontFamily: "inherit" }}>
-              <Play size={14} /> Live App Demo
+              📱 Mobile Demo
+            </button>
+            <button onClick={onEnterDesktop}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.07)", cursor: "pointer", color: "#fff", fontSize: 14, fontWeight: 700, fontFamily: "inherit" }}>
+              💻 Desktop Demo
             </button>
           </div>
         </motion.div>
@@ -1187,7 +1398,7 @@ function LandingPage({ onOpenPresentation, onEnterApp }: { onOpenPresentation: (
 
 // ─── ROOT ─────────────────────────────────────────────────────────────────────
 export default function WVUNexus() {
-  const [view, setView] = useState("landing"); // landing | app
+  const [view, setView] = useState("landing"); // landing | mobile | desktop
   const [showPresentation, setShowPresentation] = useState(false);
 
   return (
@@ -1197,7 +1408,7 @@ export default function WVUNexus() {
         {showPresentation && (
           <PresentationComponent
             onClose={() => setShowPresentation(false)}
-            onEnterApp={() => { setShowPresentation(false); setView("app"); }}
+            onEnterMobile={() => { setShowPresentation(false); setView("mobile"); }}
           />
         )}
       </AnimatePresence>
@@ -1207,12 +1418,17 @@ export default function WVUNexus() {
           <motion.div key="landing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <LandingPage
               onOpenPresentation={() => setShowPresentation(true)}
-              onEnterApp={() => setView("app")}
+              onEnterMobile={() => setView("mobile")}
+              onEnterDesktop={() => setView("desktop")}
             />
           </motion.div>
+        ) : view === "mobile" ? (
+          <motion.div key="mobile" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+            <MobileAppDemo onBackToLanding={() => setView("landing")} />
+          </motion.div>
         ) : (
-          <motion.div key="app" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            <AppDemo onBackToLanding={() => setView("landing")} />
+          <motion.div key="desktop" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
+            <DesktopAppDemo onBackToLanding={() => setView("landing")} />
           </motion.div>
         )}
       </AnimatePresence>
