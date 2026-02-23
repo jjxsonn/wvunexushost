@@ -604,7 +604,7 @@ function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobi
   if (slideId === 7) return (
     <div style={{ display: "flex", flexDirection: "column", gap: 14, width: "100%" }}>
       {[
-        { icon: "�", title: "Predictive Retention Engine", desc: "Only platform that flags at-risk students 2-3 weeks early. Proven intervention window creates measurable dropout reduction.", highlight: "Real retention ROI" },
+        { icon: "🧠", title: "Predictive Retention Engine", desc: "Only platform that flags at-risk students 2-3 weeks early. Proven intervention window creates measurable dropout reduction.", highlight: "Real retention ROI" },
         { icon: "📊", title: "Institutional Data Intelligence", desc: "Leadership gets real-time satisfaction scoring + sentiment trends. Replaces biased surveys with continuous, anonymous feedback.", highlight: "Competitive advantage" },
         { icon: "🏗️", title: "Existing Infrastructure Play", desc: "No CAPEX. Bridges 15 existing systems via APIs. Low risk, fast deployment, proven model at 800+ universities.", highlight: "Scalability" },
         { icon: "🔐", title: "Privacy & Compliance Baked In", desc: "ZKP encryption, FERPA compliant, zero data liability. Institutional trust is the moat.", highlight: "Institutional trust" },
