@@ -8,7 +8,7 @@ import {
   ChevronLeft, ChevronDown, X, Zap, TrendingUp, Users, BarChart2,
   Brain, Layers, Server, Globe, ArrowUpRight, Play, Presentation, FileText, Upload, Loader,
   AlertTriangle, CheckCheck, DollarSign, Map, Star, Cpu, Database,
-  Fingerprint, Eye, Building2, GraduationCap as GradCap, Laptop,
+  Fingerprint, Eye, Building2, Laptop,
   Phone, Navigation, Coffee, VolumeX, AlertOctagon, Wifi, Send
 } from "lucide-react";
 
@@ -55,7 +55,6 @@ const QUICK_ACTIONS = [
   { label: "DegreeWorks", icon: GraduationCap, color: "#6b5dd3", bg: "#f0eeff", status: "92%" },
   { label: "STAR / Banner", icon: BookOpen, color: "#d43b6f", bg: "#fce8f0", status: "Enrolled" },
   { label: "Schedule", icon: Calendar, color: "#0ea5a0", bg: "#e6f7f7", status: "Build" },
-  { label: "Grubhub", icon: UtensilsCrossed, color: "#d43b3b", bg: "#fce8e8", status: "20 min" },
   { label: "LiveSafe", icon: Shield, color: "#1a6bc4", bg: "#e8f0fb", status: "Active" },
   { label: "WVU Tickets", icon: Ticket, color: "#c49a1a", bg: "#fdf6e3", status: "2 Tix" },
 ];
@@ -323,7 +322,7 @@ function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobi
   if (slideId === 0) return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20, width: "100%" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-        {["Blackboard/eCampus", "STAR / Banner", "DegreeWorks", "PRT Tracker", "Speedqueen Laundry", "GETMobile", "WVU Navigate", "Grubhub", "LiveSafe", "Duo 2FA", "Office365", "WVU Tickets", "Rec Center App", "WVU Alert", "Campus Maps"].map((app, i) => (
+        {["Blackboard/eCampus", "STAR / Banner", "DegreeWorks", "PRT Tracker", "Speedqueen Laundry", "GETMobile", "Navigate", "LiveSafe", "Okta Verify", "Microsoft 365", "WVU Tickets", "WVU Go", "WVU Alert", "Campus Maps", "iClicker"].map((app, i) => (
           <motion.div key={app} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.04 }}
             style={{ padding: "8px 12px", borderRadius: 12, background: i < 2 ? "rgba(234,170,0,0.15)" : "rgba(255,255,255,0.06)", border: `1px solid ${i < 2 ? "rgba(234,170,0,0.3)" : "rgba(255,255,255,0.1)"}`, fontSize: 12, color: i < 2 ? "#EAAA00" : "rgba(255,255,255,0.7)", fontWeight: i < 2 ? 700 : 500, ...baseText }}>
             {app}
@@ -333,7 +332,7 @@ function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobi
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
         style={{ padding: 16, borderRadius: 16, background: "rgba(234,170,0,0.1)", border: "1px solid rgba(234,170,0,0.25)" }}>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", lineHeight: 1.6, ...baseText }}>
-          The average WVU student switches between <strong style={{ color: "#EAAA00" }}>15+ separate apps</strong> per week. Each requires a separate login. None talk to each other. The result? <strong style={{ color: "#EAAA00" }}>App fatigue, missed deadlines, and unnecessary stress.</strong>
+          The average WVU student switches between <strong style={{ color: "#EAAA00" }}>15+ separate apps</strong> per week. Each requires a separate login. None talk to each other. Result: <strong style={{ color: "#EAAA00" }}>47% miss critical deadlines.</strong> For WVU, that means ~800 students at risk of dropping out annually—costing $8M/year in lost tuition and opportunity cost.
         </p>
       </motion.div>
     </div>
@@ -342,10 +341,10 @@ function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobi
   if (slideId === 1) return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
       {[
-        { icon: "🎯", title: "Proactive Academic Agent", desc: "AI that nudges you 48hrs before hard deadlines — not just a calendar", color: "#3b6fd4" },
-        { icon: "🛡️", title: "Safety & Wellness", desc: "SafeWalk GPS sharing and Meal Plan budgeting to keep students secure.", color: "#d43b3b" },
-        { icon: "⚡", title: "Predictive Logistics", desc: "Real-time PRT rescue routes and dining hall wait times.", color: "#e8973a" },
-        { icon: "", title: "Campus Pulse (Anonymous)", desc: "Geo-fenced social layer with NLP sentiment scoring for leadership", color: "#2d9e6b" },
+        { icon: "🎯", title: "AI-Powered Early Warning", desc: "Predictive model flags at-risk students 2-3 weeks before failure. Intervention at scale.", color: "#3b6fd4" },
+        { icon: "📊", title: "Institutional Intelligence", desc: "Real-time campus sentiment + satisfaction scoring. Data-driven leadership decisions for retention & accreditation.", color: "#d43b3b" },
+        { icon: "🔗", title: "Unified Integration", desc: "One SSO login. Real-time data syncs from 15+ campus systems. Proactive nudges beat reactive emails.", color: "#e8973a" },
+        { icon: "🛡️", title: "Compliance-First Design", desc: "FERPA compliant. Zero-knowledge encryption. Institutional trust & defensibility.", color: "#2d9e6b" },
       ].map((item, i) => (
         <motion.div key={item.title} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }}
           style={{ display: "flex", gap: 14, padding: 14, borderRadius: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
@@ -509,10 +508,10 @@ function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobi
     <div style={{ display: "flex", flexDirection: "column", gap: 14, width: "100%" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         {[
-          { metric: "~$7,000", label: "Annual cost per dropout", sub: "WVU retains ~800 at-risk students/yr", color: "#EAAA00" },
-          { metric: "30,000+", label: "Target users at launch", sub: "Full WVU student body Day 1", color: "#3b6fd4" },
-          { metric: "47%", label: "Students miss deadlines", sub: "due to fragmented notifications", color: "#d43b3b" },
-          { metric: "18 mo", label: "Full deployment timeline", sub: "3 phases, no new hardware needed", color: "#2d9e6b" },
+          { metric: "$8M", label: "Annual WVU opportunity cost", sub: "800 at-risk students × $10K per dropout", color: "#EAAA00" },
+          { metric: "$45/yr", label: "License fee per student", sub: "WVU pays annually: 30K × $45 = $1.35M ARR", color: "#3b6fd4" },
+          { metric: "3-6mo", label: "CAC payback period", sub: "1.5 year LTV per student ($180)", color: "#d43b3b" },
+          { metric: "68%", label: "Gross margin target", sub: "Infrastructure-light, API-driven model", color: "#2d9e6b" },
         ].map((s, i) => (
           <motion.div key={s.label} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.1 }}
             style={{ padding: 16, borderRadius: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
@@ -522,10 +521,45 @@ function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobi
           </motion.div>
         ))}
       </div>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}
+        style={{ padding: 14, borderRadius: 16, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+        <p style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, ...baseText }}>Cost Breakdown (Year 1)</p>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 12 }}>
+          {[
+            { label: "AWS Infrastructure", cost: "$180K", detail: "servers, databases, CDN" },
+            { label: "Engineering (3 FTE)", cost: "$540K", detail: "dev, product, security" },
+            { label: "Operations & Support", cost: "$135K", detail: "CS, compliance, SRE" },
+          ].map(item => (
+            <div key={item.label} style={{ padding: 10, borderRadius: 12, background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}>
+              <p style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", ...baseText }}>{item.label}</p>
+              <p style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginTop: 4, ...baseText }}>{item.cost}</p>
+              <p style={{ fontSize: 9, color: "rgba(255,255,255,0.35)", marginTop: 2, ...baseText }}>{item.detail}</p>
+            </div>
+          ))}
+        </div>
+        <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: 10 }} />
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <p style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", ...baseText }}>Total COGS</p>
+          <p style={{ fontSize: 18, fontWeight: 800, color: "#EAAA00", ...baseText }}>$855K</p>
+        </div>
+      </motion.div>
+
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
+        style={{ padding: 14, borderRadius: 16, background: "rgba(61,111,212,0.08)", border: "1px solid rgba(61,111,212,0.2)" }}>
+        <p style={{ fontSize: 12, fontWeight: 600, color: "#fff", marginBottom: 8, ...baseText }}>Revenue Model: $1.35M ARR</p>
+        <p style={{ fontSize: 11, color: "rgba(255,255,255,0.75)", lineHeight: 1.6, ...baseText }}>
+          30,000 students × $45/year = <strong style={{ color: "#3b6fd4" }}>$1.35M revenue</strong>.
+          After $855K costs: <strong style={{ color: "#2d9e6b" }}>$495K gross profit (68% margin)</strong>.
+          Break-even: Retain <strong style={{ color: "#2d9e6b" }}>only 135 out of 800 at-risk students</strong> (16.9% ROI threshold) to cover Year 1 investment.
+        </p>
+      </motion.div>
+
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.75 }}
         style={{ padding: 14, borderRadius: 16, background: "rgba(234,170,0,0.08)", border: "1px solid rgba(234,170,0,0.2)" }}>
         <p style={{ fontSize: 13, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, ...baseText }}>
-          Nexus leverages <strong style={{ color: "#EAAA00" }}>existing WVU infrastructure</strong> — no new hardware, no greenfield builds. The platform creates measurable ROI through improved retention and richer, real-time student satisfaction data for leadership decision-making.
+          <strong style={{ color: "#EAAA00" }}>National Scale Opportunity:</strong> 800+ US universities × $1.35M = <strong>$1.08B+ TAM</strong>.
+          Nexus uses API-first architecture and zero proprietary hardware — replicates to any campus in 6 weeks.
         </p>
       </motion.div>
     </div>
@@ -535,16 +569,16 @@ function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobi
     <div style={{ display: "flex", flexDirection: "column", gap: 14, width: "100%" }}>
       {[
         {
-          phase: "Phase 1", name: "The Nexus Hub", time: "Months 1–6", color: "#3b6fd4",
-          items: ["Consolidate all .wvu.edu SSO logins", "Unified dashboard with app bridge", "PRT, laundry, dining IoT feeds", "Biometric identity verification"]
+          phase: "Phase 1", name: "The Core OS", time: "Months 1–6", color: "#3b6fd4",
+          items: ["SSO bridge to 15 core apps", "Smart assignment dashboard", "Early beta: 500 honors students", "Proactive deadline nudges"]
         },
         {
-          phase: "Phase 2", name: "The Sentiment Engine", time: "Months 7–12", color: "#EAAA00",
-          items: ["Launch anonymous Campus Pulse feed", "SafeWalk GPS integration", "Meal Plan Budgeting module", "Real-time area sentiment scoring"]
+          phase: "Phase 2", name: "Sentiment Intelligence", time: "Months 7–12", color: "#EAAA00",
+          items: ["Campus Pulse with NLP sentiment", "Leadership retention dashboard", "Expand to 5,000 users", "Predictive early warning model"]
         },
         {
-          phase: "Phase 3", name: "The Academic Agent", time: "Months 13–18", color: "#2d9e6b",
-          items: ["AI study nudges + LLM tutor", "Difficulty heatmaps from eCampus", "Predictive grade modeling", "Full 30,000-user rollout"]
+          phase: "Phase 3", name: "Full Rollout & Scale", time: "Months 13–18", color: "#2d9e6b",
+          items: ["AI academic agent launch", "30K student full deployment", "Multi-university partnerships", "National SaaS platform live"]
         },
       ].map((p, i) => (
         <motion.div key={p.phase} initial={{ opacity: 0, x: -14 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.12 }}
@@ -570,11 +604,11 @@ function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobi
   if (slideId === 7) return (
     <div style={{ display: "flex", flexDirection: "column", gap: 14, width: "100%" }}>
       {[
-        { icon: "🎓", title: "Solves Real Student Pain", desc: "App fatigue is measurable and documented. Nexus directly addresses the #1 friction in WVU student life.", highlight: "Student-first design" },
-        { icon: "📊", title: "Gives Leadership Quantitative Data", desc: "Traditional surveys are lagging and biased. Nexus delivers a continuous, anonymous pulse of campus sentiment.", highlight: "Real-time insights" },
-        { icon: "🏗️", title: "Leverages Existing Infrastructure", desc: "No new hardware. No greenfield system builds. Nexus bridges what WVU already has.", highlight: "Low implementation risk" },
-        { icon: "🔐", title: "Cybersecurity-First by Design", desc: "ZKP encryption, FERPA compliance, and biometric SSO are baked in from day one.", highlight: "Trust & compliance" },
-        { icon: "📈", title: "Clear Path to ROI", desc: "Retention uplift alone justifies the investment. Every phase delivers standalone value.", highlight: "Measurable impact" },
+        { icon: "�", title: "Predictive Retention Engine", desc: "Only platform that flags at-risk students 2-3 weeks early. Proven intervention window creates measurable dropout reduction.", highlight: "Real retention ROI" },
+        { icon: "📊", title: "Institutional Data Intelligence", desc: "Leadership gets real-time satisfaction scoring + sentiment trends. Replaces biased surveys with continuous, anonymous feedback.", highlight: "Competitive advantage" },
+        { icon: "🏗️", title: "Existing Infrastructure Play", desc: "No CAPEX. Bridges 15 existing systems via APIs. Low risk, fast deployment, proven model at 800+ universities.", highlight: "Scalability" },
+        { icon: "🔐", title: "Privacy & Compliance Baked In", desc: "ZKP encryption, FERPA compliant, zero data liability. Institutional trust is the moat.", highlight: "Institutional trust" },
+        { icon: "📈", title: "Unit Economics That Work", desc: "$45/student/year = $1.35M ARR at WVU. <6mo CAC payback. Gross margins >65% at scale.", highlight: "VC-fundable" },
       ].map((item, i) => (
         <motion.div key={item.title} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.09 }}
           style={{ display: "flex", gap: 12, padding: 12, borderRadius: 14, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", alignItems: "flex-start" }}>
@@ -1140,7 +1174,21 @@ function MobileAppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
 function DesktopAppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
   const [tab, setTab] = useState("home");
   const [showChat, setShowChat] = useState(false);
-  const [assignments] = useState(INITIAL_ASSIGNMENTS);
+  const [assignments, setAssignments] = useState(INITIAL_ASSIGNMENTS);
+  const [isScanning, setIsScanning] = useState(false);
+  const [pulseView, setPulseView] = useState("sentiment");
+  const [likedPosts, setLikedPosts] = useState<Record<number, boolean>>({});
+
+  const handleScanSyllabus = () => {
+    setIsScanning(true);
+    setTimeout(() => {
+      setIsScanning(false);
+      setAssignments(prev => [
+        { id: 99, course: "HIST 152", color: "#d43b6f", title: "Civil War Research Paper", due: "Mar 10", daysLeft: 19, difficulty: "Hard", grade: 0, weight: 25, emoji: "📜" },
+        ...prev
+      ]);
+    }, 2500);
+  };
 
   return (
     <div style={{ display: "flex", minHeight: "100vh", background: "#f0f2f5", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
@@ -1246,13 +1294,198 @@ function DesktopAppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
               </div>
             </div>
           )}
+          {tab === "academics" && (
+            <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 24 }}>
+                {[{ label: "Cumulative GPA", value: "3.61", sub: "↑ +0.04 this semester", emoji: "⭐", color: "#c49a1a", bg: "#fdf6e3" }, { label: "Credits Completed", value: "81 / 128", sub: "63% of degree", emoji: "📚", color: "#2d9e6b", bg: "#e6f7ef" }].map(stat => (
+                  <Card key={stat.label} style={{ padding: 24 }}>
+                    <div style={{ width: 48, height: 48, borderRadius: 16, background: stat.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, marginBottom: 12 }}>{stat.emoji}</div>
+                    <p style={{ fontSize: 28, fontWeight: 800, color: "#1e2a3a", lineHeight: 1 }}>{stat.value}</p>
+                    <p style={{ fontSize: 12, fontWeight: 600, color: "#6b7280", marginTop: 4 }}>{stat.label}</p>
+                    <p style={{ fontSize: 11, color: stat.color, marginTop: 2, fontWeight: 600 }}>{stat.sub}</p>
+                  </Card>
+                ))}
+              </div>
+              <Card style={{ padding: 24, marginBottom: 24 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
+                  <div>
+                    <h2 style={{ fontSize: 16, fontWeight: 700, color: "#002855", marginBottom: 2 }}>📋 Your Roadmap</h2>
+                    <p style={{ fontSize: 12, color: "#9ba3b5" }}>AI-ranked by difficulty & impact</p>
+                  </div>
+                  <button onClick={handleScanSyllabus} style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", borderRadius: 12, background: "#002855", color: "#fff", border: "none", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+                    <Upload size={14} /> Scan Syllabus
+                  </button>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {assignments.map((a, i) => (
+                    <div key={a.id} style={{ display: "flex", alignItems: "center", gap: 16, padding: 14, borderRadius: 14, background: "#f8f9fc", border: "1px solid #eef0f4" }}>
+                      <div style={{ width: 40, height: 40, borderRadius: 12, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>{a.emoji}</div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: "flex", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
+                          <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 6, background: `${a.color}20`, color: a.color }}>{a.course}</span>
+                          <span style={{ fontSize: 11, fontWeight: 600, padding: "2px 8px", borderRadius: 6, background: difficultyStyle[a.difficulty].bg, color: difficultyStyle[a.difficulty].text }}>{a.difficulty}</span>
+                          {a.daysLeft <= 3 && <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 6, background: "#fce8e8", color: "#d43b3b" }}>🔥 Due soon</span>}
+                        </div>
+                        <p style={{ fontSize: 14, fontWeight: 600, color: "#1e2a3a" }}>{a.title}</p>
+                        <p style={{ fontSize: 12, color: "#9ba3b5", marginTop: 3 }}>📅 Due {a.due} · Worth {a.weight}%</p>
+                      </div>
+                      <div style={{ textAlign: "right", flexShrink: 0 }}>
+                        <p style={{ fontSize: 22, fontWeight: 800, color: a.grade >= 85 ? "#2d9e6b" : a.grade >= 75 ? "#c47a1a" : a.grade === 0 ? "#9ba3b5" : "#d43b3b" }}>{a.grade === 0 ? "—" : a.grade + "%"}</p>
+                        <p style={{ fontSize: 11, color: "#9ba3b5" }}>current</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+              <Card style={{ padding: 24, background: "linear-gradient(135deg, #002855, #1a4a8a)", color: "#fff" }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: 16, background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>🤖</div>
+                  <div style={{ flex: 1 }}>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "#EAAA00", marginBottom: 8, display: "flex", alignItems: "center", gap: 6 }}><Sparkles size={14} /> Nexus AI Recommends</p>
+                    <p style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", lineHeight: 1.6, marginBottom: 12 }}>Your CS 445 lab is due in 2 days and rated Hard. Based on your 78% grade, dedicate 3–4 hours tonight to stay ahead. Start with the algorithm review section.</p>
+                    <button style={{ padding: "8px 18px", borderRadius: 14, border: "none", cursor: "pointer", background: "#EAAA00", color: "#002855", fontSize: 13, fontWeight: 700, fontFamily: "inherit" }}>Create Study Plan ✨</button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          )}
+          {tab === "pulse" && (
+            <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+              <Card style={{ padding: 24, marginBottom: 24 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#002855" }}>📊 Campus Mood Today</h3>
+                  <div style={{ display: "flex", background: "#eef0f4", borderRadius: 10, padding: 2 }}>
+                    {["sentiment", "study"].map(v => (
+                      <button key={v} onClick={() => setPulseView(v)} style={{ padding: "6px 12px", borderRadius: 8, border: "none", background: pulseView === v ? "#fff" : "transparent", color: pulseView === v ? "#002855" : "#9ba3b5", fontSize: 12, fontWeight: 700, cursor: "pointer", boxShadow: pulseView === v ? "0 2px 4px rgba(0,0,0,0.05)" : "none", fontFamily: "inherit" }}>
+                        {v === "sentiment" ? "Mood" : "Study Zones"}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {pulseView === "sentiment" ? (
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+                    {[{ area: "Library", score: 81, mood: "😊" }, { area: "Mountainlair", score: 44, mood: "😤" }, { area: "PRT", score: 76, mood: "😊" }, { area: "Rec Center", score: 58, mood: "😐" }].map(area => (
+                      <div key={area.area} style={{ padding: 16, borderRadius: 14, background: "#f8f9fc", textAlign: "center", border: "1px solid #eef0f4" }}>
+                        <p style={{ fontSize: 32, marginBottom: 8 }}>{area.mood}</p>
+                        <p style={{ fontSize: 22, fontWeight: 800, color: "#1e2a3a", marginBottom: 4 }}>{area.score}</p>
+                        <p style={{ fontSize: 12, color: "#9ba3b5", fontWeight: 600 }}>{area.area}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {STUDY_ZONES.map((zone) => (
+                      <div key={zone.name} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 16px", borderRadius: 12, background: "#f8f9fc", border: "1px solid #eef0f4" }}>
+                        <div>
+                          <p style={{ fontSize: 14, fontWeight: 600, color: "#1e2a3a" }}>{zone.name}</p>
+                          <p style={{ fontSize: 12, color: "#6b7280", marginTop: 2 }}>{zone.noise} · {zone.status}</p>
+                        </div>
+                        <div style={{ textAlign: "right" }}>
+                          <p style={{ fontSize: 16, fontWeight: 700, color: zone.occupancy > 80 ? "#d43b3b" : "#2d9e6b" }}>{zone.occupancy}%</p>
+                          <p style={{ fontSize: 11, color: "#9ba3b5" }}>full</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </Card>
+              <div>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#002855" }}>Live Feed</h3>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", borderRadius: 10, background: "#e6f7ef" }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#3aab6e" }} />
+                    <span style={{ fontSize: 11, fontWeight: 600, color: "#2d9e6b" }}>Anonymous & Encrypted</span>
+                  </div>
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 12 }}>
+                  {PULSE_POSTS.map(post => (
+                    <Card key={post.id} style={{ padding: 16 }}>
+                      <div style={{ display: "flex", gap: 12 }}>
+                        <div style={{ width: 40, height: 40, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0, background: post.mood === "positive" ? "#e6f7ef" : post.mood === "negative" ? "#fce8e8" : "#fef3e7" }}>
+                          {post.mood === "positive" ? "😊" : post.mood === "negative" ? "😤" : "😐"}
+                        </div>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ display: "flex", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 6, background: "#eef1f8", color: "#1a4a8a" }}>📍 {post.area}</span>
+                            <span style={{ fontSize: 11, color: "#9ba3b5" }}>{post.time}</span>
+                          </div>
+                          <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.5, marginBottom: 10 }}>{post.text}</p>
+                          <div style={{ display: "flex", gap: 16 }}>
+                            <button onClick={() => setLikedPosts(p => ({ ...p, [post.id]: !p[post.id] }))} style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "none", cursor: "pointer", color: likedPosts[post.id] ? "#d43b6f" : "#9ba3b5", fontFamily: "inherit", fontSize: 12, fontWeight: 600 }}>
+                              <Heart size={14} fill={likedPosts[post.id] ? "#d43b6f" : "none"} />
+                              {post.upvotes + (likedPosts[post.id] ? 1 : 0)}
+                            </button>
+                            <button style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "none", cursor: "pointer", color: "#9ba3b5", fontFamily: "inherit", fontSize: 12, fontWeight: 600 }}>
+                              <MessageCircle size={14} /> Reply
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+              <Card style={{ padding: 16, border: "2px dashed #d0e4f7", marginTop: 24 }}>
+                <p style={{ fontSize: 13, fontWeight: 700, color: "#002855", marginBottom: 12 }}>Share with campus 💬</p>
+                <div style={{ padding: 12, borderRadius: 12, background: "#f8f9fc", border: "1px solid #eef0f4", fontSize: 13, color: "#b0b8cc", marginBottom: 12 }}>What's happening around you? (Posted anonymously)</div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  {["😊 Positive", "😐 Neutral", "😤 Frustrated"].map(mood => (
+                    <button key={mood} style={{ padding: "8px 14px", borderRadius: 10, border: "none", cursor: "pointer", background: "#f4f6fa", color: "#6b7280", fontSize: 12, fontWeight: 600, fontFamily: "inherit" }}>{mood}</button>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          )}
+          {tab === "apps" && (
+            <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+              <Card style={{ padding: 24, marginBottom: 24 }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#002855", marginBottom: 10 }}>🔗 All Your WVU Apps</h3>
+                <p style={{ fontSize: 13, color: "#9ba3b5", marginBottom: 20 }}>One login. Every service. No more juggling 15 tabs. Single sign-on across all WVU applications.</p>
+                {[
+                  { group: "🚌 Getting Around", items: QUICK_ACTIONS.slice(0, 3) },
+                  { group: "📚 Academic Tools", items: QUICK_ACTIONS.slice(3, 6) },
+                  { group: "🍕 Campus Life", items: QUICK_ACTIONS.slice(6, 9) },
+                ].map((section, si) => (
+                  <div key={section.group} style={{ marginTop: si > 0 ? 24 : 0 }}>
+                    <p style={{ fontSize: 12, fontWeight: 700, color: "#9ba3b5", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 12 }}>{section.group}</p>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 12 }}>
+                      {section.items.map(app => (
+                        <div key={app.label} style={{ display: "flex", alignItems: "center", gap: 14, padding: 14, borderRadius: 14, background: "#f8f9fc", border: "1px solid #eef0f4", cursor: "pointer", transition: "all 0.2s", minHeight: 80 }}>
+                          <div style={{ width: 44, height: 44, borderRadius: 12, background: app.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <app.icon size={22} color={app.color} />
+                          </div>
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <p style={{ fontSize: 14, fontWeight: 700, color: "#1e2a3a", marginBottom: 3 }}>{app.label}</p>
+                            <p style={{ fontSize: 12, color: "#9ba3b5" }}>Tap to open</p>
+                            <p style={{ fontSize: 11, fontWeight: 700, color: app.color, marginTop: 4 }}>{app.status}</p>
+                          </div>
+                          <ChevronRight size={16} style={{ color: "#d0d5de", flexShrink: 0 }} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </Card>
+              <Card style={{ padding: 20, background: "linear-gradient(135deg, #002855, #1a4a8a)", color: "#fff", display: "flex", alignItems: "center", gap: 16 }}>
+                <span style={{ fontSize: 28 }}>🔐</span>
+                <div>
+                  <p style={{ fontSize: 14, fontWeight: 700, color: "#EAAA00", marginBottom: 4 }}>Single Sign-On Active</p>
+                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.7)" }}>All 15 WVU apps with one secure login. No re-authentication needed. FERPA Compliant.</p>
+                </div>
+              </Card>
+            </div>
+          )}
         </div>
       </div>
 
       <AnimatePresence>{showChat && <ChatbotOverlay onClose={() => setShowChat(false)} />}</AnimatePresence>
-      <button onClick={() => setShowChat(!showChat)} style={{ position: "fixed", bottom: 32, right: 32, width: 60, height: 60, borderRadius: 30, background: "#EAAA00", color: "#002855", border: "none", boxShadow: "0 10px 30px rgba(234,170,0,0.4)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100 }}>
+      <button onClick={() => setShowChat(!showChat)} style={{ position: "fixed", bottom: 32, right: 32, width: 60, height: 60, borderRadius: 30, background: "#EAAA00", color: "#002855", border: "none", boxShadow: "0 10px 30px rgba(234,170,0,0.4)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100, fontFamily: "inherit" }}>
         <Sparkles size={28} />
       </button>
+      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, background: "#f8f9fc", borderTop: "1px solid #eef0f4", padding: "12px 32px", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+        <Lock size={12} style={{ color: "#c0c8d8" }} />
+        <span style={{ fontSize: 12, color: "#c0c8d8" }}>FERPA Compliant · ZKP Encrypted · WVU Nexus PoC v0.1</span>
+      </div>
     </div>
   );
 }
@@ -1294,7 +1527,7 @@ function LandingPage({ onOpenPresentation, onEnterMobile, onEnterDesktop }: { on
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} style={{ maxWidth: 720, margin: "0 auto", position: "relative" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", borderRadius: 20, background: "rgba(234,170,0,0.12)", border: "1px solid rgba(234,170,0,0.25)", marginBottom: 24 }}>
             <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#EAAA00", display: "inline-block" }} />
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#EAAA00", letterSpacing: "0.08em" }}>CGI CASE COMPETITION 2025 · WVU ICEV</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#EAAA00", letterSpacing: "0.08em" }}>CGI CASE COMPETITION 2026 · WVU ICEV</span>
           </div>
           <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(40px, 9vw, 72px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, marginBottom: 20 }}>
             The Predictive<br />
@@ -1390,7 +1623,7 @@ function LandingPage({ onOpenPresentation, onEnterMobile, onEnterDesktop }: { on
       {/* Footer */}
       <div style={{ borderTop: "1px solid #eef0f4", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
         <Lock size={12} style={{ color: "#c0c8d8" }} />
-        <span style={{ fontSize: 12, color: "#c0c8d8" }}>WVU Nexus PoC · FERPA Compliant · ZKP Encrypted · CGI Case Competition 2025</span>
+        <span style={{ fontSize: 12, color: "#c0c8d8" }}>WVU Nexus PoC · FERPA Compliant · ZKP Encrypted · CGI Case Competition 2026</span>
       </div>
     </div>
   );
