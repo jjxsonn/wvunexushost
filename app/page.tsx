@@ -704,7 +704,7 @@ function MobileAppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
   const [safeMode, setSafeMode] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [pulseView, setPulseView] = useState("sentiment"); // sentiment | study
-  const [likedPosts, setLikedPosts] = useState({});
+  const [likedPosts, setLikedPosts] = useState<Record<number, boolean>>({});
   const [toast, setToast] = useState<string | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -1053,9 +1053,9 @@ function MobileAppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
                             </div>
                             <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.5 }}>{post.text}</p>
                             <div style={{ display: "flex", gap: 16, marginTop: 12 }}>
-                              <button onClick={() => setLikedPosts((p: Record<number, boolean>) => ({ ...p, [post.id]: !p[post.id] }))}
+                              <button onClick={() => setLikedPosts(p => ({ ...p, [post.id]: !p[post.id] }))}
                                 style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "none", cursor: "pointer", color: likedPosts[post.id] ? "#d43b6f" : "#9ba3b5", fontFamily: "inherit" }}>
-                                <Heart size={14} fill={likedPosts[post.id as keyof typeof likedPosts] ? "#d43b6f" : "none"} />
+                                <Heart size={14} fill={likedPosts[post.id] ? "#d43b6f" : "none"} />
                                 <span style={{ fontSize: 12, fontWeight: 600 }}>{post.upvotes + (likedPosts[post.id] ? 1 : 0)}</span>
                               </button>
                               <button style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "none", cursor: "pointer", color: "#9ba3b5", fontFamily: "inherit" }}>
