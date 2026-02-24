@@ -392,7 +392,7 @@ function SlideContent({ slideId, onEnterMobile }: { slideId: number; onEnterMobi
           {/* Header */}
           <div style={{ padding: "36px 16px 16px", background: "linear-gradient(120deg, #002855 0%, #003da5 100%)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-              <div style={{ width: 24, height: 24, borderRadius: 8, background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 800 }}>N</div>
+              <img src="/WVULogo.png" alt="WVU" style={{ width: 24, height: 24, objectFit: "contain" }} />
               <div style={{ width: 24, height: 24, borderRadius: 8, background: "#EAAA00", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 800 }}>A</div>
             </div>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 10, fontWeight: 500, marginBottom: 2 }}>Good morning,</p>
@@ -806,7 +806,7 @@ function MobileAppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
       <div style={{ background: "rgba(255,255,255,0.9)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(0,0,0,0.06)", position: "sticky", top: 0, zIndex: 40 }}>
         <div style={{ maxWidth: 680, margin: "0 auto", padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
           <button onClick={onBackToLanding} style={{ display: "flex", alignItems: "center", gap: 8, background: "none", border: "none", cursor: "pointer", padding: 0, marginRight: 4 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 10, background: "linear-gradient(135deg, #002855, #1a4a8a)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 14 }}>N</div>
+            <img src="/WVULogo.png" alt="WVU" style={{ width: 32, height: 32, objectFit: "contain" }} />
             <span style={{ fontFamily: "'Fraunces', serif", color: "#002855", fontSize: 20, fontWeight: 700 }}>Nexus</span>
           </button>
           <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 14px", borderRadius: 16, background: "#f4f6fa", flex: 1, maxWidth: 260 }}>
@@ -1191,13 +1191,13 @@ function DesktopAppDemo({ onBackToLanding }: { onBackToLanding: () => void }) {
   };
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", background: "#f0f2f5", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+    <div style={{ display: "flex", height: "100vh", overflow: "hidden", background: "#f0f2f5", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
       {/* Sidebar */}
       <div style={{ width: 260, background: "#002855", color: "#fff", display: "flex", flexDirection: "column", flexShrink: 0 }}>
-        <div style={{ padding: 24, display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg, #EAAA00, #f0c030)", display: "flex", alignItems: "center", justifyContent: "center", color: "#002855", fontWeight: 800 }}>N</div>
+        <button onClick={onBackToLanding} style={{ padding: 24, display: "flex", alignItems: "center", gap: 12, background: "none", border: "none", cursor: "pointer", color: "inherit", width: "100%", textAlign: "left" }}>
+          <img src="/WVULogo.png" alt="WVU" style={{ width: 36, height: 36, objectFit: "contain" }} />
           <span style={{ fontFamily: "'Fraunces', serif", fontSize: 20, fontWeight: 700 }}>Nexus OS</span>
-        </div>
+        </button>
         <div style={{ padding: "0 12px", display: "flex", flexDirection: "column", gap: 4 }}>
           {[
             { id: "home", label: "Dashboard", icon: Layers },
@@ -1497,22 +1497,36 @@ function LandingPage({ onOpenPresentation, onEnterMobile, onEnterDesktop }: { on
 
       {/* Sticky nav */}
       <div style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(255,255,255,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid #eef0f4" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "14px 24px", display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ width: 34, height: 34, borderRadius: 10, background: "linear-gradient(135deg,#002855,#1a4a8a)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 15 }}>N</div>
-            <span style={{ fontFamily: "'Fraunces',serif", color: "#002855", fontSize: 22, fontWeight: 700 }}>WVU Nexus</span>
-          </div>
-          <div style={{ marginLeft: "auto", display: "flex", gap: 10, alignItems: "center" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "10px 24px", display: "flex", alignItems: "center", gap: 12, justifyContent: "space-between" }}>
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ display: "flex", alignItems: "center", gap: 10, background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>
+            {/* WVU Logo */}
+            <img
+              src="/WVULogo.png"
+              alt="WVU Logo"
+              style={{ width: 32, height: 32, display: "flex", flexShrink: 0, objectFit: "contain" }}
+            />
+            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              <span style={{ fontFamily: "'Fraunces',serif", color: "#002855", fontSize: 16, fontWeight: 800, lineHeight: 1 }}>WVU Nexus</span>
+              <span style={{ fontSize: 9, color: "#9ba3b5", fontWeight: 600, letterSpacing: "0.05em" }}>Student OS</span>
+            </div>
+          </button>
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <button onClick={onOpenPresentation}
-              style={{ display: "flex", alignItems: "center", gap: 7, padding: "9px 18px", borderRadius: 14, border: "1px solid #eef0f4", background: "#f8f9fc", cursor: "pointer", color: "#002855", fontSize: 13, fontWeight: 700, fontFamily: "inherit" }}>
-              📽️ View Pitch Deck
+              style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", borderRadius: 12, border: "none", background: "linear-gradient(135deg,#002855,#1a4a8a)", cursor: "pointer", color: "#fff", fontSize: 12, fontWeight: 700, fontFamily: "inherit", transition: "all 0.2s" }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = "0.9"}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}>
+              📽️ Pitch
             </button>
             <button onClick={onEnterMobile}
-              style={{ display: "flex", alignItems: "center", gap: 7, padding: "9px 16px", borderRadius: 14, border: "none", background: "linear-gradient(135deg,#002855,#1a4a8a)", cursor: "pointer", color: "#fff", fontSize: 13, fontWeight: 700, fontFamily: "inherit" }}>
+              style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", borderRadius: 12, border: "none", background: "linear-gradient(135deg,#002855,#1a4a8a)", cursor: "pointer", color: "#fff", fontSize: 12, fontWeight: 700, fontFamily: "inherit", transition: "all 0.2s" }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = "0.9"}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}>
               📱 Mobile
             </button>
             <button onClick={onEnterDesktop}
-              style={{ display: "flex", alignItems: "center", gap: 7, padding: "9px 16px", borderRadius: 14, border: "1px solid #eef0f4", background: "#fff", cursor: "pointer", color: "#002855", fontSize: 13, fontWeight: 700, fontFamily: "inherit" }}>
+              style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", borderRadius: 12, border: "none", background: "linear-gradient(135deg,#002855,#1a4a8a)", cursor: "pointer", color: "#fff", fontSize: 12, fontWeight: 700, fontFamily: "inherit", transition: "all 0.2s" }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = "0.9"}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}>
               💻 Desktop
             </button>
           </div>
@@ -1527,7 +1541,7 @@ function LandingPage({ onOpenPresentation, onEnterMobile, onEnterDesktop }: { on
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} style={{ maxWidth: 720, margin: "0 auto", position: "relative" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", borderRadius: 20, background: "rgba(234,170,0,0.12)", border: "1px solid rgba(234,170,0,0.25)", marginBottom: 24 }}>
             <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#EAAA00", display: "inline-block" }} />
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#EAAA00", letterSpacing: "0.08em" }}>CGI CASE COMPETITION 2026 · WVU ICEV</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#EAAA00", letterSpacing: "0.08em" }}>CGI CASE COMPETITION 2026 · WVU MISA</span>
           </div>
           <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(40px, 9vw, 72px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, marginBottom: 20 }}>
             The Predictive<br />
@@ -1537,17 +1551,17 @@ function LandingPage({ onOpenPresentation, onEnterMobile, onEnterDesktop }: { on
             WVU Nexus unifies 15+ fragmented campus apps into one proactive, AI-powered dashboard — built for 30,000 students.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <button onClick={onEnterMobile}
+            <button onClick={onOpenPresentation}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "none", background: "#EAAA00", cursor: "pointer", color: "#002855", fontSize: 15, fontWeight: 800, fontFamily: "inherit" }}>
+              📽️ View Pitch Deck
+            </button>
+            <button onClick={onEnterMobile}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "none", background: "linear-gradient(135deg,#002855,#1a4a8a)", cursor: "pointer", color: "#fff", fontSize: 15, fontWeight: 800, fontFamily: "inherit" }}>
               📱 Mobile Demo
             </button>
             <button onClick={onEnterDesktop}
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", cursor: "pointer", color: "#fff", fontSize: 15, fontWeight: 800, fontFamily: "inherit" }}>
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "none", background: "linear-gradient(135deg,#002855,#1a4a8a)", cursor: "pointer", color: "#fff", fontSize: 15, fontWeight: 800, fontFamily: "inherit" }}>
               💻 Desktop Demo
-            </button>
-            <button onClick={onOpenPresentation}
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.07)", cursor: "pointer", color: "#fff", fontSize: 15, fontWeight: 700, fontFamily: "inherit" }}>
-              📽️ View Pitch Deck
             </button>
           </div>
         </motion.div>
@@ -1597,13 +1611,13 @@ function LandingPage({ onOpenPresentation, onEnterMobile, onEnterDesktop }: { on
       {/* Pitch deck CTA */}
       <div style={{ padding: "0 24px 60px" }}>
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          style={{ maxWidth: 900, margin: "0 auto", borderRadius: 28, padding: "40px 36px", background: "linear-gradient(135deg, #001833, #002855, #1a4a8a)", display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
-          <div style={{ flex: 1, minWidth: 240 }}>
+          style={{ maxWidth: 900, margin: "0 auto", borderRadius: 28, padding: "40px 36px", background: "linear-gradient(135deg, #001833, #002855, #1a4a8a)", display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap", position: "relative" }}>
+          <div style={{ flex: 1, minWidth: 240, position: "relative", zIndex: 1 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "#EAAA00", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 10 }}>📽️ Case Competition Pitch Deck</p>
             <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(22px, 4vw, 32px)", fontWeight: 800, color: "#fff", lineHeight: 1.2, marginBottom: 10 }}>8 slides. Full strategy.<br />No fluff.</h3>
             <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>Problem · Solution · Architecture · Sentiment Engine · Business Case · Roadmap · Why Nexus Wins</p>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 10, flexShrink: 0 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10, flexShrink: 0, position: "relative", zIndex: 1 }}>
             <button onClick={onOpenPresentation}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: 16, border: "none", background: "#EAAA00", cursor: "pointer", color: "#002855", fontSize: 14, fontWeight: 800, fontFamily: "inherit" }}>
               📽️ Open Pitch Deck
@@ -1621,7 +1635,8 @@ function LandingPage({ onOpenPresentation, onEnterMobile, onEnterDesktop }: { on
       </div>
 
       {/* Footer */}
-      <div style={{ borderTop: "1px solid #eef0f4", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+      <div style={{ borderTop: "1px solid #eef0f4", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
+        <img src="/WVULogo.png" alt="WVU" style={{ width: 24, height: 24 }} />
         <Lock size={12} style={{ color: "#c0c8d8" }} />
         <span style={{ fontSize: 12, color: "#c0c8d8" }}>WVU Nexus PoC · FERPA Compliant · ZKP Encrypted · CGI Case Competition 2026</span>
       </div>
